@@ -7,10 +7,20 @@ export default function Resources($resource) {
     get: {method: 'GET', cache: true}
   });
 
+  const contactOne = $resource(contracts.contactOne, {}, {
+    get: {method: 'GET'}
+  });
+
+  const contactTwo = $resource(contracts.contactTwo, {}, {
+    get: {method: 'GET'}
+  });
+
+
+
   angular.extend(this, {
     userInfo,
-    user,
-    login
+    contactOne,
+    contactTwo
   });
 }
 

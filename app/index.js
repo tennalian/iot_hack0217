@@ -2,6 +2,7 @@
 import angular from 'angular';
 import ngResource from 'angular-resource';
 import uiRouter from 'angular-ui-router';
+import io from 'socket.io-client';
 
 import './assets/styles/index.less';
 

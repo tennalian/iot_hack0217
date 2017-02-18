@@ -23,7 +23,9 @@ const common = {
 		loaders: [
 			{
 				test: /\.less$/,
-				loader: extractTextPlugin.extract('style-loader', ['css-loader?importLoaders=1', 'less-loader'])
+				// loader: extractTextPlugin.extract('style-loader', ['css-loader?importLoaders=1', 'postcss-loader', 'less-loader'])
+				loader: extractTextPlugin.extract('style-loader', ['css-loader?importLoaders=1', 'postcss-loader', 'less-loader'])
+
 			},{
 			    test: /.(jpe?g|gif|png|woff(2)?|eot|ttf|svg)(\?[a-z0-9=\.]+)?$/,
       			loader: 'url-loader?limit=1000000&name=[name].[ext]'
@@ -35,13 +37,17 @@ const common = {
     			test: /\.html$/,
     			loader: 'raw'
     		}
-		]
+		],
+		noParse: ['ws']
 	},
+
+	externals: ['ws'],
 
 	plugins: [
         new webpack.ProvidePlugin({
             '_': 'lodash',
             '$': 'jquery',
+            'moment': 'moment',
             'window.jQuery': 'jquery'
         }),
         new extractTextPlugin('[name].[hash].css'),

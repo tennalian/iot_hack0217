@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-import mainContextModule from './mainContext/mainContext.module';
+import mainContextModule from './main/main.module';
 
 
 angular.module('iot.components', [

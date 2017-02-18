@@ -1,8 +1,8 @@
 import angular from 'angular';
 
-import mainContext from './mainContext.component';
+import mainContext from './main.component';
 
 export default angular
-  .module('ulsApp.main', [])
+  .module('iot.main', [])
   .component('mainContext', mainContext)
   .name;

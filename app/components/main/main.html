@@ -1,0 +1,47 @@
+
+<header>
+<h1>IoT штука!</h1>
+</header>
+<main ui-view>
+
+	<div class="info-block user" ng-if="!vm.loading && !vm.error">
+		<div>
+			<ul>
+	  			<li>
+					<span>Пользователь:</span> {{vm.user.name}}
+	  			</li>
+	  			<li>
+					<span>Email:</span> {{vm.user.email}}
+	  			</li>
+	  		</ul>
+		</div>
+	</div>
+
+
+	<div class="info-block" ng-if="!vm.loading && !vm.error">
+		<div class="sensors" ng-if="!vm.noSensors">
+			<div class="item" ng-repeat="item in vm.sensors">
+				<div class="inside">
+					<h3>{{item.title}}</h3>
+					<ul class="sensor">
+						<li>Модель: {{item.model}}</li>
+						<li>Сработало: {{item.data}}</li>
+						<li>Активность: <span class="state" ng-class="{'active': item.state, 'disabled': !item.state}"></span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="error no-sensors" ng-if="vm.noSensors">
+			<h2>Нет датчиков</h2>
+		</div>
+	</div>
+
+	<div class="loading" ng-if="vm.loading">
+		<div class="loader"></div>
+	</div>
+
+	<div class="loading" ng-if="!vm.loading && vm.error">
+		<h2 class="error">Упс! Что-то пошло не так</h2>
+	</div>
+
+</main>
