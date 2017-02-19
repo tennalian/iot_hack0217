@@ -15,12 +15,20 @@ export default function Resources($resource) {
     get: {method: 'GET'}
   });
 
+  const contactFire = $resource(contracts.contactFire, {}, {
+    get: {method: 'GET'}
+  });
 
+  const contactEnergy = $resource(contracts.contactEnergy, {}, {
+    get: {method: 'GET'}
+  });
 
   angular.extend(this, {
     userInfo,
     contactOne,
-    contactTwo
+    contactTwo,
+    contactFire,
+    contactEnergy
   });
 }
 

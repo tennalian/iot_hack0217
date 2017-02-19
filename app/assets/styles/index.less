@@ -71,15 +71,28 @@ main{
 	}
 	.sensors{
 		display: flex;
+		flex-wrap: wrap;
 		width: 100%;
 		justify-content: space-between;
 		.item{
 			width: 48%;
+			margin: 0 0 @padding;
 			.inside{
 				background: white;
+				min-height: 170px;
 				border-radius: 2px;
 				padding: @padding;
 				box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24), 0 0 2px 0 rgba(0, 0, 0, 0.12);
+				&.empty{
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					.loader{
+						border-color: lighten(@color, 50%);
+						width: 30px;
+						height: 30px;
+					}
+				}
 			}
 			ul{
 				margin: 0;
@@ -95,15 +108,16 @@ main{
 						height: 20px;
 						border-radius: 50%;
 						margin-left: 10px;
-						&.active{
-							background: #54c089;
-						}
-						&.disabled{
-							background: #da5e51;
-						}
+						&.active{background: #54c089;}
+						&.disabled{background: #da5e51;}
+						&.red{color: #da5e51;}
+						&.green{color: #54c089;}
 					}
 				}
 
+			}
+			&.item-fire{
+				// width: 100%;
 			}
 		}
 	}
@@ -122,15 +136,17 @@ main{
 	width: 100%;
 	justify-content: center;
 	align-items: center;
-	.loader{
-		display: block;
-		height: 40px;
-		width: 40px;
-		background: transparent;
-		border: 4px solid @color;
-		animation: spin 2s linear infinite;
-	}
 }
+
+.loader{
+	display: block;
+	height: 40px;
+	width: 40px;
+	background: transparent;
+	border: 4px solid @color;
+	animation: spin 2s linear infinite;
+}
+
 
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }

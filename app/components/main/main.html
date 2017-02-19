@@ -1,6 +1,5 @@
-
 <header>
-<h1>IoT штука!</h1>
+<h1>KORBIT IoT</h1>
 </header>
 <main ui-view>
 
@@ -20,14 +19,53 @@
 
 	<div class="info-block" ng-if="!vm.loading && !vm.error">
 		<div class="sensors" ng-if="!vm.noSensors">
-			<div class="item" ng-repeat="item in vm.sensors">
-				<div class="inside">
-					<h3>{{item.title}}</h3>
+			<div class="item one">
+				<div class="inside" ng-show="!vm.one.isEmpty">
+					<h3>{{vm.one.title}}</h3>
 					<ul class="sensor">
-						<li>Модель: {{item.model}}</li>
-						<li>Сработало: {{item.data}}</li>
-						<li>Активность: <span class="state" ng-class="{'active': item.state, 'disabled': !item.state}"></span></li>
+						<li>Модель: {{vm.one.model}}</li>
+						<li>Активность: <span class="state" ng-class="{'active': vm.one.state, 'disabled': !vm.one.state}"></span></li>
 					</ul>
+				</div>
+				<div class="inside empty" ng-show="vm.one.isEmpty">
+					<div class="loader"></div>
+				</div>
+			</div>
+			<div class="item two">
+				<div class="inside" ng-show="!vm.two.isEmpty">
+					<h3>{{vm.two.title}}</h3>
+					<ul class="sensor">
+						<li>Модель: {{vm.two.model}}</li>
+						<li>Активность: <span class="state" ng-class="{'active': vm.two.state, 'disabled': !vm.two.state}"></span></li>
+					</ul>
+				</div>
+				<div class="inside empty" ng-show="vm.two.isEmpty">
+					<div class="loader"></div>
+				</div>
+			</div>
+			<div class="item fire">
+				<div class="inside" ng-show="!vm.fire.isEmpty">
+					<h3>{{vm.fire.title}}</h3>
+					<ul class="sensor">
+						<li>Модель: {{vm.fire.model}}</li>
+						<li>Температура: {{vm.fire.t}}</li>
+						<li>Задымленность: <span ng-class="{'green': vm.fire.fire ==0, 'red': vm.fire.fire > 0}">{{vm.fire.fire}}</span></li>
+					</ul>
+				</div>
+				<div class="inside empty" ng-show="vm.fire.isEmpty">
+					<div class="loader"></div>
+				</div>
+			</div>
+			<div class="item energy">
+				<div class="inside" ng-show="!vm.energy.isEmpty">
+					<h3>{{vm.energy.title}}</h3>
+					<ul class="sensor">
+						<li>Модель: {{vm.energy.model}}</li>
+						<li>Показания: {{vm.energy.data}}</li>
+					</ul>
+				</div>
+				<div class="inside empty" ng-show="vm.energy.isEmpty">
+					<div class="loader"></div>
 				</div>
 			</div>
 		</div>
